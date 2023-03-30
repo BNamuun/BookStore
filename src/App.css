@@ -24,3 +24,9 @@ img{
 .carousel{
   bottom: 1px solid green;
 }
+.carousel-caption{
+  bottom: 40% !important;
+}
+/* .carousel-inner {
+  background-color: #F5C6EC !important;
+  } */
