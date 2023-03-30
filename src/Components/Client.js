@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./Header";
-import { NavbarTop } from "./Navbar";
+import { NavbarTop } from "./NavbarTop";
 
 export function Client() {
   return (
