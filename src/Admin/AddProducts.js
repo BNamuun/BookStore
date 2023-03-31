@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 export function AddProducts() {
@@ -7,6 +7,7 @@ export function AddProducts() {
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [price, setPrice] = useState();
 
   async function handleFileUpload(event) {
     setUploading(true);
@@ -23,14 +24,15 @@ export function AddProducts() {
         setUploading(false);
       });
   }
-
+  console.log(price);
   function submit() {
     // console.log({ title, categoryId, text, image });
     axios
-      .post(`${process.env.REACT_APP_API_URL}/articles`, {
+      .post(`${process.env.REACT_APP_API_URL}/products`, {
         title,
         content: text,
         image,
+        price,
       })
       .then((res) => {
         const { status } = res;
@@ -38,6 +40,8 @@ export function AddProducts() {
           alert("Success");
           setTitle("");
           setText("");
+          setPrice();
+          window.location.reload();
         }
       });
   }
@@ -84,6 +88,14 @@ export function AddProducts() {
         )}
         {image && <img src={image.path} width="100" alt="" />}
       </div>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        onChange={(e) => setPrice(e.target.value)}
+        className="form-control"
+        placeholder="Үнэ"
+      ></input>
       <button className="btn btn-primary m-3" onClick={submit}>
         Submit
       </button>

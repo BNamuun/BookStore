@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookAtlas } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 export function NavbarTop() {
   return (
     <Navbar bg="light" expand="sm">
@@ -22,7 +23,9 @@ export function NavbarTop() {
             navbarScroll
           >
             <Nav.Link href="#action1">Нүүр</Nav.Link>
-            <Nav.Link href="#action2">Бүгд</Nav.Link>
+            <Nav.Link to="/products" as={Link}>
+              Бүгд
+            </Nav.Link>
             <Nav.Link href="#action2">Ном</Nav.Link>
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
