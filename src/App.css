@@ -88,7 +88,7 @@
   padding-top: 300px;
   box-sizing: border-box;
   position: relative;
-  box-shadow: 0 0 20px 10px rgbba(25, 25, 25, .1) ;
+  box-shadow: 0 0 20px 10px rgba(25, 25, 25, .1) ;
   transition: all .3s;
 }
 .wrapperD:hover{
