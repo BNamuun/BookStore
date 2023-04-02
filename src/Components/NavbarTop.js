@@ -10,10 +10,10 @@ import { faBookAtlas } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 export function NavbarTop() {
   return (
-    <Navbar bg="light" expand="sm">
+    <Navbar bg="dark" variant="dark" expand="sm">
       <Container fluid>
         <Navbar.Brand href="#">
-          English Book <FontAwesomeIcon icon={faBookAtlas} />
+          English Book <FontAwesomeIcon icon={faBookAtlas} size="xl" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
