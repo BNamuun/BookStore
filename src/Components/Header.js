@@ -6,7 +6,7 @@ export function Header() {
   return (
     <>
       <NavHeader />
-      {/* <CarouselNav /> */}
+      <CarouselNav />
       <Info />
     </>
   );
