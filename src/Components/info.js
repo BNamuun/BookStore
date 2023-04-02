@@ -31,7 +31,7 @@ export function Info() {
           {/* <span>Hoojfha kldj slkj lddf fa sdfklj dfas lkfj</span> */}
           {productList &&
             productList.map((product) => (
-              <div key={product.id} className="wrapperD border">
+              <div key={product.id} className="wrapperD">
                 <div className="imageDiv col-xl-4 col-sm-6 col-12">
                   {
                     <img
@@ -43,7 +43,7 @@ export function Info() {
                     />
                   }{" "}
                 </div>
-                <div className="desc text-center d-flex flex-column gap-2 py-2">
+                <div className="desc border text-center d-flex flex-column gap-2 py-2">
                   <h4>{product.title}</h4>
                   <p> {product.content}</p>
                   <h5> Үнэ: {product.price} ₮</h5>

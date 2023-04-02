@@ -28,9 +28,9 @@
 .carousel{
   bottom: 1px solid green;
 }
-.carousel-item{
+/* .carousel-item{
   margin: 0 auto !important;
-}
+} */
 .carousel-item img{
   overflow: hidden;
   width: 100%;
