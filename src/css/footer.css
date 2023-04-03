@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+.containerF {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding:20px 20px;
+}
+.footerS{
+    background-color: #063255 !important;
+    color: white;
+}
+.footText{
+    color: white !important;
+    font-weight: 800;
+}
+.white{
+    color: white !important;
+}

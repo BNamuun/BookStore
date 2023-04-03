@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+.containerNav {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding:0 20px;
+    color: #063255;
+}
+img{
+    width: 100%;
+}
+.rowS{
+    display: flex;
+    /* flex-wrap:wrap; */
+    gap: 40px;
+}
+.col-4{
+    width: calc(100%/4 - 40px);
+    flex-grow: 1;
+    flex: 1 350px;
+}
+.col-2{
+    width: calc(100%/2 - 40px);
+    flex-grow: 1;
+    flex: 1 350px;
+}

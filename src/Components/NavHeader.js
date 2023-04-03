@@ -11,17 +11,11 @@ export function NavHeader() {
           className="mx-2"
           icon={faAtom}
           size="xl"
-          style={{ color: "#251f51" }}
+          style={{ color: "#19376D" }}
         />
         <p className="navText my-auto">
-          Англи хэлний хүүхдийн хялбаршуулсан ном
+          Англи хэлний хүүхдийн хялбаршуулсан ном 🌻
         </p>
-        <FontAwesomeIcon
-          className="mx-2"
-          icon={faAtom}
-          size="xl"
-          style={{ color: "#251f51" }}
-        />
       </div>
     </div>
   );
