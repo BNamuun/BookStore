@@ -10,7 +10,7 @@ export function GeneralInfo() {
   return (
     <>
       <section>
-        <div className="containerM ">
+        <div className="containerM">
           <div className="row">
             <div className="col-sm-6 col-12 m-auto">
               <img src={level_1} className="p-5" alt="some" />

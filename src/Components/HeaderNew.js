@@ -17,8 +17,8 @@ export function HeaderNew() {
             <Link to="/products" as={Link}>
               Бүгд
             </Link>
-            <Link to="/" as={Link}>
-              Англи ном
+            <Link to="detail" as={Link}>
+              Details
             </Link>
             <Link className="cta" to="/" as={Link}>
               Захиалах
