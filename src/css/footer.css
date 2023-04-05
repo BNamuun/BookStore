@@ -10,11 +10,19 @@
 .footerS{
     background-color: #063255 !important;
     color: white;
+    padding: 2rem;
+    position: relative;
 }
 .footText{
     color: white !important;
-    font-weight: 800;
+    font-weight: 500;
 }
 .white{
     color: white !important;
+}
+.footer-right{
+    position: absolute;
+    bottom: 2px;
+    text-align: center;
+    color: rgb(173, 172, 171);
 }

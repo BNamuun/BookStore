@@ -12,10 +12,10 @@ export function GeneralInfo() {
       <section>
         <div className="containerM">
           <div className="row">
-            <div className="col-sm-6 col-12 m-auto">
+            <div className="col-sm-6 imgP col-12 m-auto">
               <img src={level_1} className="p-5" alt="some" />
             </div>
-            <div className="col-sm-6  col-12 m-auto">
+            <div className="col-sm-6 textP col-12 m-auto">
               <h1>Finsweet Was A Dream To Work With</h1>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -37,7 +37,7 @@ export function GeneralInfo() {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-6  col-12 m-auto">
+            <div className="col-sm-6 textP col-12 m-auto">
               <h1>Finsweet Was A Dream To Work With</h1>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -57,15 +57,15 @@ export function GeneralInfo() {
                 Дэлгэрэнгүй
               </AwesomeButton>
             </div>
-            <div className="col-sm-6 col-12 m-auto">
+            <div className="col-sm-6 imgP col-12 m-auto">
               <img src={level_2} className="p-5" alt="some" />
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-6 col-12 m-auto">
+            <div className="col-sm-6 imgP col-12 m-auto">
               <img src={level_3} className="p-5" alt="some" />
             </div>
-            <div className="col-sm-6  col-12 m-auto">
+            <div className="col-sm-6 textP col-12 m-auto">
               <h1>Finsweet Was A Dream To Work With</h1>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -90,7 +90,7 @@ export function GeneralInfo() {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-6  col-12 m-auto">
+            <div className="col-sm-6 textP col-12 m-auto">
               <h1>Finsweet Was A Dream To Work With</h1>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -110,15 +110,15 @@ export function GeneralInfo() {
                 Дэлгэрэнгүй
               </AwesomeButton>
             </div>
-            <div className="col-sm-6 col-12 m-auto">
+            <div className="col-sm-6 imgP col-12 m-auto">
               <img src={level_4} className="p-5" alt="some" />
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-6 col-12 m-auto">
+            <div className="col-sm-6 imgP col-12 m-auto">
               <img src={Nancy} className="p-5" alt="some" />
             </div>
-            <div className="col-sm-6  col-12 m-auto">
+            <div className="col-sm-6 textP col-12 m-auto">
               <h1>Finsweet Was A Dream To Work With</h1>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
