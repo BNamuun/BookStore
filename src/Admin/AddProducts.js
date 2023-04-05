@@ -5,7 +5,9 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 export function AddProducts() {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState([]);
+  const [images, setImages] = useState([]);
+
   const [uploading, setUploading] = useState(false);
   const [price, setPrice] = useState();
 
@@ -13,25 +15,27 @@ export function AddProducts() {
     setUploading(true);
     const imageFile = event.target.files[0];
     const formData = new FormData();
-    formData.append("image", imageFile); //formData.append(name, value) – add a form field with the given name and value,
-    await fetch(`${process.env.REACT_APP_API_URL}/upload-image`, {
+    formData.append("images", imageFile); //formData.append(name, value) – add a form field with the given name and value,
+    await fetch(`${process.env.REACT_APP_API_URL}/upload-images`, {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
-        setImage(data);
+        console.log(data, "some");
+        setImages([...images, data]);
         setUploading(false);
       });
   }
-  console.log(price);
+  console.log(image);
+  // console.log(price);
   function submit() {
     // console.log({ title, categoryId, text, image });
     axios
       .post(`${process.env.REACT_APP_API_URL}/products`, {
         title,
         content: text,
-        image,
+        images,
         price,
       })
       .then((res) => {
@@ -86,6 +90,9 @@ export function AddProducts() {
             {" "}
           </div>
         )}
+        {images.map((image) => (
+          <img src={image.path} width="100" alt="" />
+        ))}
         {image && <img src={image.path} width="100" alt="" />}
       </div>
       <input

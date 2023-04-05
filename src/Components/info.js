@@ -49,7 +49,7 @@ export function Info() {
           {productList &&
             productList.map((product) => (
               <Link
-                to={"/example"}
+                to={`/${product._id}`}
                 as={Link}
                 key={product.id}
                 className="wrapperD "
@@ -62,14 +62,18 @@ export function Info() {
                   {/* {setImgPath(product.image.path)} */}
                 </div>
                 <div className="desc d-flex flex-column">
-                  <h4 className="title" style={{ color: "#063255" }}>
-                    {product.title}
-                  </h4>
-                  <div style={{ color: "grey" }}>{parse(product.content)}</div>{" "}
                   <div className="d-flex justify-content-between align-items-center">
-                    <h5 className="price m-0">{product.price} ₮</h5>
-                    {/* <h5 className="text-primary">Дэлгэрэнгүй харах</h5> */}
+                    <h4 className="title" style={{ color: "#063255" }}>
+                      {product.title}
+                    </h4>
+                    <p className="price m-0">
+                      {product.price.toLocaleString(navigator.language, {
+                        minimumFractionDigits: 0,
+                      })}{" "}
+                      ₮
+                    </p>
                   </div>
+                  <div style={{ color: "grey" }}>{parse(product.content)}</div>{" "}
                 </div>
               </Link>
             ))}
