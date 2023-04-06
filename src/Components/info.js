@@ -57,13 +57,13 @@ export function Info() {
               >
                 <div
                   className="col-12 imageDiv"
-                  style={{ backgroundImage: `url(${product.image.path})` }}
+                  style={{ backgroundImage: `url(${product.images[0].path})` }}
                 >
                   {/* {setImgPath(product.image.path)} */}
                 </div>
                 <div className="desc d-flex flex-column">
                   <div className="d-flex justify-content-between align-items-center">
-                    <h4 className="title" style={{ color: "#063255" }}>
+                    <h4 className="title m-0" style={{ color: "#063255" }}>
                       {product.title}
                     </h4>
                     <p className="price m-0">
