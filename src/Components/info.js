@@ -31,9 +31,9 @@ export function Info() {
     loadProuducts();
   }, []);
 
-  function getDetailOf(id) {
-    setSearchParams({ order: id });
-  }
+  // function getDetailOf(id) {
+  //   setSearchParams({ order: id });
+  // }
 
   return (
     // style={{ backgroundColor: "#B4E4FF" }}
@@ -55,11 +55,11 @@ export function Info() {
             productList.map((product) => (
               <Link
                 to={`/products/${product._id}`}
-                as={Link}
+                // as={Link}
                 key={product.id}
                 className="wrapperD "
                 style={linkStyle}
-                onClick={() => getDetailOf(product._id)}
+                // onClick={() => getDetailOf(product._id)}
               >
                 <div
                   className="col-12 imageDiv"
