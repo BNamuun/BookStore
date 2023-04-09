@@ -37,10 +37,10 @@ function AsNavFor({ images }) {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 400,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 4,
+          slidesToScroll: 4,
         },
       },
     ],

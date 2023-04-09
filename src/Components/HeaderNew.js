@@ -22,8 +22,8 @@ export function HeaderNew() {
             <Link to="/products" as={Link} style={linkStyle}>
               Бүгд
             </Link>
-            <Link to="detail" as={Link} style={linkStyle}>
-              Details
+            <Link to="/audio" as={Link} style={linkStyle}>
+              AudioBook
             </Link>
             <Link className="cta" to="/" as={Link} style={linkStyle}>
               Захиалах

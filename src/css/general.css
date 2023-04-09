@@ -26,3 +26,11 @@
     flex-grow: 1;
     flex: 1 350px;
 }
+@media (max-width: 380px) {
+    .imgP{
+        order: 2;
+    }
+    .textP{
+      order: 1;
+    }
+  }

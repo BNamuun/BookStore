@@ -67,14 +67,3 @@ a{
     width: 100%;
   }
   
-  @media (max-width: 380px) {
-    .imgP{
-        order: 2;
-    }
-    .textP{
-      order: 1;
-    }
-    .textP:first-child{
-        padding-top: 20px;
-    }
-  }

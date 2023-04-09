@@ -1,8 +1,5 @@
-import { CarouselNav } from "./CarouselNav";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import clouds from "../images/v1015-111a.jpg";
-import kid from "../images/kid-1.png";
 import "../css/productCard.css";
 import parse from "html-react-parser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,8 +7,6 @@ import { faEarthAmericas, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { Link, useSearchParams } from "react-router-dom";
 export function Info() {
   const [productList, setList] = useState([]);
-  const [productImg, setImgPath] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams({});
   const parse = require("html-react-parser");
   const linkStyle = {
     textDecoration: "none",
@@ -79,7 +74,9 @@ export function Info() {
                       ₮
                     </p>
                   </div>
-                  <div style={{ color: "grey" }}>{parse(product.content)}</div>{" "}
+                  <div style={{ color: "grey" }}>
+                    {parse(`${product.content}`)}
+                  </div>{" "}
                 </div>
               </Link>
             ))}

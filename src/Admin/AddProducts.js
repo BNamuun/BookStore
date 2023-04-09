@@ -8,6 +8,7 @@ export function AddProducts() {
   const [text, setText] = useState("");
   const [image, setImage] = useState([]);
   const [images, setImages] = useState([]);
+  const [CKimages, setCKImages] = useState([]);
   const [content, setContent] = useState("");
   const [extraContent, setExtraContent] = useState("");
   const [uploading, setUploading] = useState(false);
@@ -29,6 +30,7 @@ export function AddProducts() {
         setUploading(false);
       });
   }
+
   // console.log(price);
   function submit() {
     // console.log({ title, categoryId, text, image });
@@ -56,6 +58,7 @@ export function AddProducts() {
   function savedata(state) {
     setModalVats(state);
   }
+
   console.log(modalVars);
   return (
     <div className="d-flex flex-column gap-3 m-5">
@@ -69,7 +72,6 @@ export function AddProducts() {
       <h2> Short product content</h2>
       <CKEditor
         editor={ClassicEditor}
-        data={text}
         onChange={(event, editor) => {
           const data = editor.getData();
           setText(data);

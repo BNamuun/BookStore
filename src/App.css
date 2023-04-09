@@ -11,6 +11,9 @@
 .App {
   text-align: center;
 }
+.slick-prev:before, .slick-next:before {
+  color: #063255;
+}
 /* .App-header {
   background-color: #282c34;
   min-height: 100vh;
