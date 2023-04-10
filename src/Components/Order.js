@@ -1,20 +1,26 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import React, { Component } from "react";
 import Slider from "react-slick";
 import AsNavFor from "./AsForNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-export function Order() {
+import CartContext from "../context/cart/CartContext";
+export function Order({ basketFunction }) {
   // const [searchParams, setSearchParams] = useSearchParams({});
   const { id } = useParams();
   // const productOrder = searchParams.get("order");
   const [productInfo, setProductInfo] = useState({});
-  const [selectedNumber, setSelectedNumber] = useState(1);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const parse = require("html-react-parser");
   const handleNumberChange = (event) => {
-    setSelectedNumber(parseInt(event.target.value));
+    setSelectedQuantity(parseInt(event.target.value));
+  };
+  const { addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
+  const navigateToOrderBasket = () => {
+    navigate("/basket");
   };
   function getProductsDetail() {
     if (id) {
@@ -72,7 +78,7 @@ export function Order() {
                 </label>
                 <select
                   className="border-2"
-                  value={selectedNumber}
+                  value={selectedQuantity}
                   onChange={handleNumberChange}
                 >
                   {[...Array(10)].map((_, index) => (
@@ -84,7 +90,11 @@ export function Order() {
               </div>
               <div className="mt-5 d-flex flex-wrap gap-3">
                 <button className="border-2 col-md-6 col-12 border-indigo-900 py-2">
-                  <FontAwesomeIcon icon={faCartShopping} className="px-2" />
+                  <FontAwesomeIcon
+                    icon={faCartShopping}
+                    className="px-2"
+                    onClick={(e) => addToCart(productInfo)}
+                  />
                   Сагслах
                 </button>
                 <button className="border-2 col-md-6 col-12 border-indigo-900 py-2">

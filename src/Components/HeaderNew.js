@@ -2,7 +2,11 @@ import "../css/nav.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookAtlas } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { SlBasket } from "react-icons/sl";
+import CartContext from "../context/cart/CartContext";
+import { useContext } from "react";
 export function HeaderNew() {
+  const { cartItems } = useContext(CartContext);
   const linkStyle = {
     textDecoration: "none",
     color: "#063255",
@@ -28,8 +32,14 @@ export function HeaderNew() {
             <Link className="cta" to="/" as={Link} style={linkStyle}>
               Захиалах
             </Link>
-            <Link to="/" as={Link} style={linkStyle}>
-              Some btn
+            <Link to="/shoppingCard" as={Link} style={linkStyle}>
+              <SlBasket className="text-2xl" />
+              {cartItems.length > 0 && (
+                <div className="item__count">
+                  {" "}
+                  <span>{cartItems.length}</span>
+                </div>
+              )}
             </Link>
           </ul>
         </div>
