@@ -40,6 +40,11 @@ export function Order({ basketFunction }) {
     getProductsDetail();
   }, [id]);
 
+  const handleClick = () => {
+    console.log("clicking");
+    addToCart(productInfo);
+  };
+
   console.log({ productInfo });
   return (
     <>
@@ -89,12 +94,11 @@ export function Order({ basketFunction }) {
                 </select>
               </div>
               <div className="mt-5 d-flex flex-wrap gap-3">
-                <button className="border-2 col-md-6 col-12 border-indigo-900 py-2">
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    className="px-2"
-                    onClick={(e) => addToCart(productInfo)}
-                  />
+                <button
+                  onClick={handleClick}
+                  className="border-2 col-md-6 col-12 border-indigo-900 py-2 active:bg-teal-500"
+                >
+                  <FontAwesomeIcon icon={faCartShopping} className="px-2" />
                   Сагслах
                 </button>
                 <button className="border-2 col-md-6 col-12 border-indigo-900 py-2">
@@ -111,35 +115,35 @@ export function Order({ basketFunction }) {
           <div>
             <h2>Үзүүлэлт</h2>
             <tbody>
-              <tr class="text-sm border-t">
-                <th class="py-1.5 px-3.5 max-w-[160px] bg-gray-400/10 col-span-3 font-normal text-left">
+              <tr className="text-sm border-t">
+                <th className="py-1.5 px-3.5 max-w-[160px] bg-gray-400/10 col-span-3 font-normal text-left">
                   ISBN
                 </th>
-                <td class="py-1.5 px-3.5 flex border-2 items-center align-middle col-span-9 text-left">
+                <td className="py-1.5 px-3.5 flex border-2 items-center align-middle col-span-9 text-left">
                   {productInfo.charcs?.ISBN}
                 </td>
               </tr>
-              <tr class="text-sm border-t">
-                <th class="py-1.5 px-3.5 max-w-[160px] bg-gray-400/10 col-span-3 font-normal text-left">
+              <tr className="text-sm border-t">
+                <th className="py-1.5 px-3.5 max-w-[160px] bg-gray-400/10 col-span-3 font-normal text-left">
                   Формат{" "}
                 </th>
-                <td class="py-1.5 px-3.5 flex border-2 items-center align-middle col-span-9 text-left">
+                <td className="py-1.5 px-3.5 flex border-2 items-center align-middle col-span-9 text-left">
                   {productInfo.charcs?.formatt}
                 </td>
               </tr>
-              <tr class="text-sm border-t">
-                <th class="py-1.5 px-3.5 max-w-[160px] bg-gray-400/10 col-span-3 font-normal text-left">
+              <tr className="text-sm border-t">
+                <th className="py-1.5 px-3.5 max-w-[160px] bg-gray-400/10 col-span-3 font-normal text-left">
                   Бичигдсэн хэл
                 </th>
-                <td class="py-1.5 px-3.5 flex border-2 items-center align-middle col-span-9 text-left">
+                <td className="py-1.5 px-3.5 flex border-2 items-center align-middle col-span-9 text-left">
                   {productInfo.charcs?.productLang}
                 </td>
               </tr>
-              <tr class="text-sm border-t">
-                <th class="py-1.5 px-3.5 max-w-[160px] bg-gray-400/10 col-span-3 font-normal text-left">
+              <tr className="text-sm border-t">
+                <th className="py-1.5 px-3.5 max-w-[160px] bg-gray-400/10 col-span-3 font-normal text-left">
                   Хэмжээ
                 </th>
-                <td class="py-1.5 px-3.5 flex border-2 items-center align-middle col-span-9 text-left">
+                <td className="py-1.5 px-3.5 flex border-2 items-center align-middle col-span-9 text-left">
                   {productInfo.charcs?.sizeProduct}
                 </td>
               </tr>

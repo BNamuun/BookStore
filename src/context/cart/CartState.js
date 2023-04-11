@@ -1,19 +1,28 @@
 import { useEffect, useReducer } from "react";
 import CartContext from "./CartContext";
 import CartReducer from "./CartReducer";
-import { SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM } from "../Types";
+import {
+  SHOW_HIDE_CART,
+  ADD_TO_CART,
+  REMOVE_ITEM,
+  LOAD_CART_ITEM,
+} from "../Types";
 
+const CART_TOKEN = "my_cart_token";
 const CartState = ({ children }) => {
   const initialState = {
     showCart: false,
-    cartItems: [],
+    cartItems: localStorage.getItem(CART_TOKEN)
+      ? JSON.parse(localStorage.getItem(CART_TOKEN))
+      : [],
+    // cartItems: [{ name: "Bat" }],
   };
 
   // Load cart items from local storage on component mount
   useEffect(() => {
-    const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
+    const storedCartItems = JSON.parse(localStorage.getItem(CART_TOKEN));
     if (storedCartItems) {
-      dispatch({ type: "LOAD_CART_ITEMS", payload: storedCartItems });
+      dispatch({ type: LOAD_CART_ITEM, payload: storedCartItems });
     }
   }, []);
 
@@ -21,10 +30,11 @@ const CartState = ({ children }) => {
 
   // Update local storage whenever cart items change
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    localStorage.setItem(CART_TOKEN, JSON.stringify(state.cartItems));
   }, [state.cartItems]);
 
   const addToCart = (item) => {
+    console.log("working" + item);
     dispatch({ type: ADD_TO_CART, payload: item });
   };
 
