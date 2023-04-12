@@ -2,7 +2,7 @@ import "../css/nav.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookAtlas } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { SlBasket } from "react-icons/sl";
+import { TiShoppingCart } from "react-icons/ti";
 import CartContext from "../context/cart/CartContext";
 import { useContext } from "react";
 export function HeaderNew() {
@@ -33,13 +33,15 @@ export function HeaderNew() {
               Захиалах
             </Link>
             <Link to="/shoppingCard" as={Link} style={linkStyle}>
-              <SlBasket className="text-2xl" />
-              {cartItems.length > 0 && (
-                <div className="item__count">
-                  {" "}
-                  <span>{cartItems.length}</span>
-                </div>
-              )}
+              <div className="relative">
+                <TiShoppingCart className="text-2xl" />
+                {cartItems.length > 0 && (
+                  <div className="item-count absolute -top-3 -right-3 bg-red-500 text-xs text-white rounded-full h-6 text-center w-6 p-1">
+                    {" "}
+                    <span>{cartItems.length}</span>
+                  </div>
+                )}
+              </div>
             </Link>
           </ul>
         </div>

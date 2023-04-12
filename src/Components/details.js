@@ -41,7 +41,7 @@ export function Details() {
                 <span className="good-symbol"> 40000</span>
               </div>
               <div className="qnt">
-                <label for="quantity">Quantity:</label>
+                <label htmlFor="quantity">Quantity:</label>
                 <input
                   type="number"
                   id="quantity"

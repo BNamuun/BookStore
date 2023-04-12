@@ -33,9 +33,8 @@ const CartState = ({ children }) => {
     localStorage.setItem(CART_TOKEN, JSON.stringify(state.cartItems));
   }, [state.cartItems]);
 
-  const addToCart = (item) => {
-    console.log("working" + item);
-    dispatch({ type: ADD_TO_CART, payload: item });
+  const addToCart = (item, qtity) => {
+    dispatch({ type: ADD_TO_CART, payload: { item, qtity } });
   };
 
   const showHideCart = () => {

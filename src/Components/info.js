@@ -74,9 +74,9 @@ export function Info() {
                       ₮
                     </p>
                   </div>
-                  <button className="my-3 bg-white hover:bg-sky-100 text-sky-800 font-semibold py-2 px-4 border border-sky-400 rounded shadow-md">
+                  {/* <button className="my-3 bg-white hover:bg-sky-100 text-sky-800 font-semibold py-2 px-4 border border-sky-400 rounded shadow-md">
                     Сагслах
-                  </button>
+                  </button> */}
                   <div style={{ color: "grey" }}>
                     {parse(`${product.content}`)}
                   </div>{" "}

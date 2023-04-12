@@ -1,14 +1,17 @@
 import { Profiler, useEffect, useRef, useState } from "react";
 import { BiArrowToRight, BiArrowToLeft } from "react-icons/bi";
 import { BsFillPlayCircleFill, BsPauseCircle } from "react-icons/bs";
-export function AudioBookExample({ img, audioSongImg }) {
+import audioSongImg from "../music/Wild School.mp3";
+import audioSongImg1 from "../music/The dress-up box.mp3";
+import img from "../images/test.jpg";
+import img1 from "../images/test_2.jpg";
+export function AudioBook() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
-  console.log(isPlaying);
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
@@ -25,7 +28,7 @@ export function AudioBookExample({ img, audioSongImg }) {
   function togglePlayPause() {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
-    if (!prevValue) {
+    if (prevValue) {
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
@@ -81,7 +84,7 @@ export function AudioBookExample({ img, audioSongImg }) {
                 className="flex outline-none bg-sky-400 rounded-r-full rounded-l-full w-8 h-8 text-8xl justify-items-center items-center"
                 onClick={togglePlayPause}
               >
-                {!isPlaying ? <BsFillPlayCircleFill /> : <BsPauseCircle />}
+                {isPlaying ? <BsFillPlayCircleFill /> : <BsPauseCircle />}
               </button>
               <button
                 className="outline-none flex items-center font-mono text-base cursor-pointer hover:bg-sky-600  text-2xl"
@@ -104,6 +107,50 @@ export function AudioBookExample({ img, audioSongImg }) {
             </div>
           </div>
         </div>
+        <div className="relative">
+          <img src={img1} alt="test" className="hover:opacity-70" />
+          <div className="absolute bottom-0 bg-zinc-700 bg-opacity-75 text-white w-full pt-2">
+            <div className="flex flex justify-content-center items-center gap-2">
+              <audio
+                ref={audioPlayer}
+                src={audioSongImg1}
+                preload="metadata"
+              ></audio>
+              <button
+                className="outline-none flex items-center font-mono text-base cursor-pointer hover:bg-sky-600 text-2xl"
+                onClick={backbutton}
+              >
+                <BiArrowToLeft />
+              </button>
+              <button
+                className="flex outline-none bg-sky-400 rounded-r-full rounded-l-full w-8 h-8 text-8xl justify-items-center items-center"
+                onClick={togglePlayPause}
+              >
+                {isPlaying ? <BsFillPlayCircleFill /> : <BsPauseCircle />}
+              </button>
+              <button
+                className="outline-none flex items-center font-mono text-base cursor-pointer hover:bg-sky-600  text-2xl"
+                onClick={forwardbutton}
+              >
+                <BiArrowToRight />
+              </button>
+            </div>
+            <div className="flex justify-content-center gap-2 w-full">
+              <div>{calculateTime(currentTime)}</div>
+              <input
+                type="range"
+                defaultValue="0"
+                ref={progressBar}
+                onChange={changeRange}
+              ></input>
+              <div>
+                {duration && !isNaN(duration) && calculateTime(duration)}
+              </div>
+            </div>
+          </div>
+        </div>
+        <img src={img} alt="test" className="" />
+        <img src={img} alt="test" className="" />
       </div>
     </div>
   );

@@ -7,11 +7,14 @@ import AsNavFor from "./AsForNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import CartContext from "../context/cart/CartContext";
-export function Order({ basketFunction }) {
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+export function Order() {
   // const [searchParams, setSearchParams] = useSearchParams({});
   const { id } = useParams();
   // const productOrder = searchParams.get("order");
   const [productInfo, setProductInfo] = useState({});
+  const [adding, setAdding] = useState(false);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const parse = require("html-react-parser");
   const handleNumberChange = (event) => {
@@ -41,9 +44,23 @@ export function Order({ basketFunction }) {
   }, [id]);
 
   const handleClick = () => {
-    console.log("clicking");
-    addToCart(productInfo);
+    setAdding(true);
+    addToCart(productInfo, selectedQuantity);
+    setAdding(false);
+    notify();
   };
+
+  const notify = () =>
+    toast.success("🦄 Бараа сагсанд нэмэгдлээ!", {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   console.log({ productInfo });
   return (
@@ -78,7 +95,7 @@ export function Order({ basketFunction }) {
               <div className="contentR">{parse(`${productInfo.content}`)}</div>
               <div className="border-dotted col-sm-6"></div>
               <div className="qnt">
-                <label for="qnty-select" style={{ paddingRight: "8px" }}>
+                <label htmlFor="qnty-select" style={{ paddingRight: "8px" }}>
                   Тоо ширхэг:
                 </label>
                 <select
@@ -98,6 +115,19 @@ export function Order({ basketFunction }) {
                   onClick={handleClick}
                   className="border-2 col-md-6 col-12 border-indigo-900 py-2 active:bg-teal-500"
                 >
+                  <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                  />
+                  {adding && <div className="spinner-border"></div>}
                   <FontAwesomeIcon icon={faCartShopping} className="px-2" />
                   Сагслах
                 </button>
