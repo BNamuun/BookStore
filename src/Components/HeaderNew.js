@@ -6,7 +6,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import CartContext from "../context/cart/CartContext";
 import { useContext } from "react";
 export function HeaderNew() {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, showHideCart } = useContext(CartContext);
   const linkStyle = {
     textDecoration: "none",
     color: "#063255",
@@ -34,7 +34,10 @@ export function HeaderNew() {
             </Link>
             <Link to="/shoppingCard" as={Link} style={linkStyle}>
               <div className="relative">
-                <TiShoppingCart className="text-2xl" />
+                <TiShoppingCart
+                  onClick={() => showHideCart()}
+                  className="text-2xl"
+                />
                 {cartItems.length > 0 && (
                   <div className="item-count absolute -top-3 -right-3 bg-red-500 text-xs text-white rounded-full h-6 text-center w-6 p-1">
                     {" "}

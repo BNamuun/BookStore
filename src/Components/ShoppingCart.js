@@ -5,18 +5,15 @@ import CartContext from "../context/cart/CartContext";
 import { CartItem } from "./CartItem";
 import Stack from "react-bootstrap/Stack";
 export function ShoppingCard() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const { showHideCart, cartItems } = useContext(CartContext);
+  const { showHideCart, cartItems, showCart } = useContext(CartContext);
+  const [show, setShow] = useState(showCart);
+
   const [visible, setVisible] = useState(false);
+  console.log("showCanvas", showCart);
   console.log({ cartItems });
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="me-2">
-        open
-      </Button>
-      <Offcanvas show={show} onHide={handleClose} placement="top">
+      <Offcanvas show={showCart} onHide={showHideCart} placement="top">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Сагс </Offcanvas.Title>
         </Offcanvas.Header>
