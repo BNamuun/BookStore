@@ -6,9 +6,6 @@ import { CartItem } from "./CartItem";
 import Stack from "react-bootstrap/Stack";
 export function ShoppingCard() {
   const { showHideCart, cartItems, showCart } = useContext(CartContext);
-  const [show, setShow] = useState(showCart);
-
-  const [visible, setVisible] = useState(false);
   console.log("showCanvas", showCart);
   console.log({ cartItems });
   return (
@@ -23,8 +20,6 @@ export function ShoppingCard() {
               <CartItem data={data} quantity={data.qtity} />
             ))}
           </Stack>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
         </Offcanvas.Body>
       </Offcanvas>
     </>
