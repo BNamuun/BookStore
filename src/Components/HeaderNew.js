@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 import CartContext from "../context/cart/CartContext";
 import { useContext } from "react";
+import { Modal } from "bootstrap";
 export function HeaderNew() {
-  const { cartItems, showHideCart } = useContext(CartContext);
+  const { items, showModal, setShowModal } = useContext(CartContext);
   const linkStyle = {
     textDecoration: "none",
     color: "#063255",
@@ -35,13 +36,23 @@ export function HeaderNew() {
             <Link to="/shoppingCard" as={Link} style={linkStyle}>
               <div className="relative">
                 <TiShoppingCart
-                  onClick={() => showHideCart()}
+                  // onClick={() => showHideCart()}
                   className="text-2xl"
                 />
-                {cartItems.length > 0 && (
+                {showModal && (
+                  <Modal size="medium" onClose={() => setShowModal(false)}>
+                    <img
+                      src={items.image}
+                      alt="some"
+                      style={{ width: "100px" }}
+                    />
+                  </Modal>
+                )}
+
+                {items.length > 0 && (
                   <div className="item-count absolute -top-3 -right-3 bg-red-500 text-xs text-white rounded-full h-6 text-center w-6 p-1">
                     {" "}
-                    <span>{cartItems.length}</span>
+                    <span>{items.length}</span>
                   </div>
                 )}
               </div>

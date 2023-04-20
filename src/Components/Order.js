@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import AsNavFor from "./AsForNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+// import CartContext from "../context/cart/CartContext";
 import CartContext from "../context/cart/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,11 +21,11 @@ export function Order() {
   const handleNumberChange = (event) => {
     setSelectedQuantity(parseInt(event.target.value));
   };
-  const { addToCart } = useContext(CartContext);
-  const navigate = useNavigate();
-  const navigateToOrderBasket = () => {
-    navigate("/basket");
-  };
+  const { addToCart, setshowModal } = useContext(CartContext);
+  // const navigate = useNavigate();
+  // const navigateToOrderBasket = () => {
+  //   navigate("/basket");
+  // };
   function getProductsDetail() {
     if (id) {
       axios
@@ -43,10 +44,20 @@ export function Order() {
     getProductsDetail();
   }, [id]);
 
+  // console.log(productInfo);
+  if (!productInfo) return null;
+  if (!productInfo?.images) return null;
+
+  let productDetail = {
+    id: productInfo._id,
+    title: productInfo.title,
+    price: productInfo.price,
+    image: productInfo.images[0]?.path,
+    quantity: selectedQuantity,
+  };
   const handleClick = () => {
-    setAdding(true);
-    addToCart(productInfo, selectedQuantity);
-    setAdding(false);
+    addToCart(productDetail);
+    setshowModal(true);
     notify();
   };
 
@@ -62,7 +73,6 @@ export function Order() {
       theme: "light",
     });
 
-  console.log({ productInfo });
   return (
     <>
       <div className="containerF py-7">

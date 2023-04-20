@@ -14,10 +14,10 @@ export function ShoppingCard() {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Сагс </Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
+        <Offcanvas.Body className="backdrop-blur-lg">
           <Stack gap={2}>
             {cartItems.map((data) => (
-              <CartItem data={data} quantity={data.qtity} />
+              <CartItem data={data} />
             ))}
           </Stack>
         </Offcanvas.Body>

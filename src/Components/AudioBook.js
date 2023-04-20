@@ -1,10 +1,10 @@
 import { Profiler, useEffect, useRef, useState } from "react";
 import { BiArrowToRight, BiArrowToLeft } from "react-icons/bi";
 import { BsFillPlayCircleFill, BsPauseCircle } from "react-icons/bs";
-export function AudioBook({ img, audioSongImg }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+export function AudioBook({ img, audioSongImg, id }) {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
@@ -59,6 +59,7 @@ export function AudioBook({ img, audioSongImg }) {
       Number(progressBar.current.value) + Number(BFbuttonVal);
     changeRange();
   };
+
   return (
     // <div className="containerF p-5">
     //   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5 ">

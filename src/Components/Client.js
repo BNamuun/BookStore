@@ -18,7 +18,7 @@ export function Client() {
         <Route path="/products" element={<Info />} />
         <Route path="/products/:id" element={<Order />} />
         <Route path="/audio" element={<AudioBookPlayer />} />
-        <Route path="/shoppingCard" element={<ShoppingCard />} />
+        {/* <Route path="/shoppingCard" element={<ShoppingCard />} /> */}
       </Routes>
       <Footer />
     </>
