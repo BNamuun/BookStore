@@ -8,6 +8,7 @@ import { Details } from "./details";
 import { Order } from "./Order";
 import { ShoppingCard } from "./ShoppingCart";
 import { AudioBookPlayer } from "./AudioExample";
+import { ShoppingCardDetails } from "./ShoppingCardDetails";
 
 export function Client() {
   return (
@@ -18,7 +19,7 @@ export function Client() {
         <Route path="/products" element={<Info />} />
         <Route path="/products/:id" element={<Order />} />
         <Route path="/audio" element={<AudioBookPlayer />} />
-        {/* <Route path="/shoppingCard" element={<ShoppingCard />} /> */}
+        <Route path="/orderedItems" element={<ShoppingCard />} />
       </Routes>
       <Footer />
     </>

@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import CartContext from "./CartContext";
 
+const CART_TOKEN = "my_cart_token";
 const NewState = ({ children }) => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(() => {
+    const storedItems = localStorage.getItem(CART_TOKEN);
+    return storedItems ? JSON.parse(storedItems) : [];
+  });
   const [showModal, setshowModal] = useState(false);
+  const handleClose = () => {
+    setshowModal(false);
+  };
+  const handleOpen = () => {
+    setshowModal(true);
+  };
 
-  const CART_TOKEN = "my_cart_token";
   function addToCart(productDetail) {
     const existingItem = items.find((item) => item.id === productDetail.id);
 
@@ -33,7 +42,16 @@ const NewState = ({ children }) => {
     }
   }, []);
   return (
-    <CartContext.Provider value={{ items, addToCart, setshowModal, showModal }}>
+    <CartContext.Provider
+      value={{
+        items,
+        addToCart,
+        handleClose,
+        showModal,
+        setshowModal,
+        handleOpen,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

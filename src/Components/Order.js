@@ -21,7 +21,7 @@ export function Order() {
   const handleNumberChange = (event) => {
     setSelectedQuantity(parseInt(event.target.value));
   };
-  const { addToCart, setshowModal } = useContext(CartContext);
+  const { addToCart, handleOpen } = useContext(CartContext);
   // const navigate = useNavigate();
   // const navigateToOrderBasket = () => {
   //   navigate("/basket");
@@ -57,7 +57,7 @@ export function Order() {
   };
   const handleClick = () => {
     addToCart(productDetail);
-    setshowModal(true);
+    handleOpen();
     notify();
   };
 

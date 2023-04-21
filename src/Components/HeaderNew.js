@@ -7,7 +7,7 @@ import CartContext from "../context/cart/CartContext";
 import { useContext } from "react";
 import { Modal } from "bootstrap";
 export function HeaderNew() {
-  const { items, showModal, setShowModal } = useContext(CartContext);
+  const { items, handleOpen } = useContext(CartContext);
   const linkStyle = {
     textDecoration: "none",
     color: "#063255",
@@ -33,13 +33,13 @@ export function HeaderNew() {
             <Link className="cta" to="/" as={Link} style={linkStyle}>
               Захиалах
             </Link>
-            <Link to="/shoppingCard" as={Link} style={linkStyle}>
+            <Link to="/orderedItems" as={Link} style={linkStyle}>
               <div className="relative">
                 <TiShoppingCart
-                  // onClick={() => showHideCart()}
+                  onClick={() => handleOpen()}
                   className="text-2xl"
                 />
-                {showModal && (
+                {/* {showModal && (
                   <Modal size="medium" onClose={() => setShowModal(false)}>
                     <img
                       src={items.image}
@@ -47,7 +47,7 @@ export function HeaderNew() {
                       style={{ width: "100px" }}
                     />
                   </Modal>
-                )}
+                )} */}
 
                 {items.length > 0 && (
                   <div className="item-count absolute -top-3 -right-3 bg-red-500 text-xs text-white rounded-full h-6 text-center w-6 p-1">
