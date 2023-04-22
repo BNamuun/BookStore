@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CartContext from "./CartContext";
+import { ShoppingCard } from "../../Components/ShoppingCart";
 
 const CART_TOKEN = "my_cart_token";
 const NewState = ({ children }) => {
@@ -8,12 +9,8 @@ const NewState = ({ children }) => {
     return storedItems ? JSON.parse(storedItems) : [];
   });
   const [showModal, setshowModal] = useState(false);
-  const handleClose = () => {
-    setshowModal(false);
-  };
-  const handleOpen = () => {
-    setshowModal(true);
-  };
+  const handleClose = () => setshowModal(false);
+  const handleOpen = () => setshowModal(true);
 
   function addToCart(productDetail) {
     const existingItem = items.find((item) => item.id === productDetail.id);
@@ -30,6 +27,31 @@ const NewState = ({ children }) => {
     } else {
       setItems([...items, productDetail]);
     }
+  }
+
+  function handledeleteItem(id) {
+    const deletedItem = items.filter((item) => item.id !== id);
+    setItems(deletedItem);
+  }
+  function handleUpdateQuantity(id, selectedQuantity) {
+    const matchedItem = items.find((item) => item.id === id);
+
+    if (matchedItem) {
+      const changedQuantity = {
+        ...matchedItem,
+        quantity: selectedQuantity,
+      };
+      const updatedQuantityItem = items.map((item) =>
+        item.id === matchedItem.id ? changedQuantity : item
+      );
+      setItems(updatedQuantityItem);
+    }
+  }
+
+  function handleEmptyCart() {
+    localStorage.removeItem(CART_TOKEN);
+    setItems([]);
+    handleClose();
   }
 
   useEffect(() => {
@@ -50,9 +72,13 @@ const NewState = ({ children }) => {
         showModal,
         setshowModal,
         handleOpen,
+        handleUpdateQuantity,
+        handledeleteItem,
+        handleEmptyCart,
       }}
     >
       {children}
+      <ShoppingCard showModal={showModal} handleClose={handleClose} />
     </CartContext.Provider>
   );
 };

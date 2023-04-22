@@ -62,16 +62,19 @@ export function Order() {
   };
 
   const notify = () =>
-    toast.success("🦄 Бараа сагсанд нэмэгдлээ!", {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    toast.success(
+      `🦄 Таны сагсанд ${selectedQuantity} ш ${productInfo.title} нэмэгдлээ!`,
+      {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      }
+    );
 
   return (
     <>

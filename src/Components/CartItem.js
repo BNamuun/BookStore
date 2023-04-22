@@ -3,10 +3,28 @@ import CartContext from "../context/cart/CartContext";
 import Stack from "react-bootstrap/Stack";
 import { formatCurrency } from "./formatCurrency";
 import { Button } from "bootstrap";
+import { RiDeleteBin6Line } from "react-icons/ri";
 export function CartItem({ data }) {
   console.log("dta", data);
+  const [increaseAmount, setIncreaseAmount] = useState(Number(data.quantity));
+  const [decreaseAmount, setDecreaseAmount] = useState(Number(data.quantity));
+  const { handleUpdateQuantity, handledeleteItem } = useContext(CartContext);
 
   if (!data) return null;
+  function increasetQtity() {
+    if (increaseAmount >= 1) {
+      const newQuantity = increaseAmount + 1;
+      setIncreaseAmount(newQuantity);
+      handleUpdateQuantity(data.id, newQuantity);
+    }
+  }
+  function decreasetQtity() {
+    if (decreaseAmount > 1) {
+      const newQuantity = decreaseAmount - 1;
+      setDecreaseAmount(newQuantity);
+      handleUpdateQuantity(data.id, newQuantity);
+    }
+  }
 
   return (
     <Stack direction="horizontal" gap={2}>
@@ -22,8 +40,11 @@ export function CartItem({ data }) {
       <div>Total price: {formatCurrency(data.price * data.quantity)}</div>
       <div>
         {" "}
-        <button>-</button>
-        <span>{data.quantity}</span> <button>+</button>
+        <button onClick={decreasetQtity}>-</button>
+        <span>{data.quantity}</span> <button onClick={increasetQtity}>+</button>
+      </div>
+      <div>
+        <RiDeleteBin6Line onClick={() => handledeleteItem(data.id)} />
       </div>
     </Stack>
   );

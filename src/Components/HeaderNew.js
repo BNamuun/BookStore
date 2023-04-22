@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 import CartContext from "../context/cart/CartContext";
 import { useContext } from "react";
-import { Modal } from "bootstrap";
 export function HeaderNew() {
   const { items, handleOpen } = useContext(CartContext);
+  // console.log(showModal);
   const linkStyle = {
     textDecoration: "none",
     color: "#063255",
@@ -33,30 +33,18 @@ export function HeaderNew() {
             <Link className="cta" to="/" as={Link} style={linkStyle}>
               Захиалах
             </Link>
-            <Link to="/orderedItems" as={Link} style={linkStyle}>
-              <div className="relative">
-                <TiShoppingCart
-                  onClick={() => handleOpen()}
-                  className="text-2xl"
-                />
-                {/* {showModal && (
-                  <Modal size="medium" onClose={() => setShowModal(false)}>
-                    <img
-                      src={items.image}
-                      alt="some"
-                      style={{ width: "100px" }}
-                    />
-                  </Modal>
-                )} */}
+            {/* <div className="relative" style={linkStyle}> */}
+            <div className="relative">
+              <TiShoppingCart onClick={handleOpen} className="text-2xl" />
 
-                {items.length > 0 && (
-                  <div className="item-count absolute -top-3 -right-3 bg-red-500 text-xs text-white rounded-full h-6 text-center w-6 p-1">
-                    {" "}
-                    <span>{items.length}</span>
-                  </div>
-                )}
-              </div>
-            </Link>
+              {items.length > 0 && (
+                <div className="item-count absolute -top-3 -right-3 bg-red-500 text-xs text-white rounded-full h-6 text-center w-6 p-1">
+                  {" "}
+                  <span>{items.length}</span>
+                </div>
+              )}
+            </div>
+            {/* </div> */}
           </ul>
         </div>
       </div>
