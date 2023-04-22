@@ -57,7 +57,7 @@ export function Order() {
   };
   const handleClick = () => {
     addToCart(productDetail);
-    handleOpen();
+    // handleOpen();
     notify();
   };
 
