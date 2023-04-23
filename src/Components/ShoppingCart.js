@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import CartContext from "../context/cart/CartContext";
@@ -10,13 +10,18 @@ export function ShoppingCard({ showModal, handleClose }) {
   console.log("showCanvas", showModal);
   return (
     <>
-      <Offcanvas show={showModal} onHide={handleClose} placement="top">
+      <Offcanvas
+        show={showModal}
+        onHide={handleClose}
+        placement="top"
+        className="mz-auto"
+      >
         <Offcanvas.Header
           closeButton
           className="max-w-screen-xl border-b-2 border-gray-30 flex justify-between items-center"
         >
           <Offcanvas.Title>Таны сагс </Offcanvas.Title>
-          <Button variant="primary">Caгс руу үсрэх</Button>
+          <Button variant="primary">Захиалга хийх</Button>
           <div className="vr" />
           <button
             className=" border-2 border-grey-600 text-rose-400 p-1"
@@ -27,7 +32,7 @@ export function ShoppingCard({ showModal, handleClose }) {
           </button>
         </Offcanvas.Header>
         <div></div>
-        <Offcanvas.Body className="backdrop-blur-lg">
+        <Offcanvas.Body className="backdrop-blur-lg max-w-screen-xl">
           {items.length > 0 ? (
             <Stack gap={3}>
               {items.map((data) => (

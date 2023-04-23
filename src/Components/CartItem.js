@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import CartContext from "../context/cart/CartContext";
 import Stack from "react-bootstrap/Stack";
 import { formatCurrency } from "./formatCurrency";
-import { Button } from "bootstrap";
 import { RiDeleteBin6Line } from "react-icons/ri";
 export function CartItem({ data }) {
   console.log("dta", data);

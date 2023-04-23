@@ -1,4 +1,4 @@
-import { Profiler, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiArrowToRight, BiArrowToLeft } from "react-icons/bi";
 import { BsFillPlayCircleFill, BsPauseCircle } from "react-icons/bs";
 export function AudioBook({ img, audioSongImg, id }) {

@@ -16,7 +16,7 @@ export function HeaderNew() {
 
   return (
     <>
-      <div className="containerNav relative">
+      <div className="containerNav relative sticky top-0 z-50">
         <div className="headingS rowS ">
           <div className="logo">
             Erdem store <FontAwesomeIcon icon={faBookAtlas} size="xl" />
