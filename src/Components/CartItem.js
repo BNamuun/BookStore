@@ -27,7 +27,11 @@ export function CartItem({ data }) {
   }
 
   return (
-    <Stack direction="horizontal" gap={2}>
+    <Stack
+      direction="horizontal"
+      gap={5}
+      className="max-w-screen-xl border-b-2 border-dashed border-gray-30 flex items-center "
+    >
       <div>
         <img
           src={data.image}
@@ -35,15 +39,25 @@ export function CartItem({ data }) {
           style={{ width: "125px", height: "75px", objectFit: "contain" }}
         />
         {data.title && <h4>{data.title}</h4>}
-        <div> each price: {data.price}</div>
+        <div className="text-muted text-base">₮ {data.price}</div>
       </div>
-      <div>Total price: {formatCurrency(data.price * data.quantity)}</div>
-      <div>
-        {" "}
-        <button onClick={decreasetQtity}>-</button>
-        <span>{data.quantity}</span> <button onClick={increasetQtity}>+</button>
+      <div className="ms-auto font-semibold">
+        {formatCurrency(data.price * data.quantity)}
       </div>
-      <div>
+
+      <div className="border divide-x-4 divide-slate-400/25 text-lg flex justify-content-center items-center">
+        <button onClick={decreasetQtity} className="px-2 font-bold">
+          -
+        </button>
+        {/* <div className="vr"></div> */}
+        <span className="px-2">{data.quantity}</span>
+        {/* <div className="vr"></div> */}
+        <button onClick={increasetQtity} className="px-2 font-bold">
+          +
+        </button>
+      </div>
+
+      <div className="text-red-700">
         <RiDeleteBin6Line onClick={() => handledeleteItem(data.id)} />
       </div>
     </Stack>

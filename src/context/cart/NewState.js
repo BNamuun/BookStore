@@ -30,8 +30,10 @@ const NewState = ({ children }) => {
   }
 
   function handledeleteItem(id) {
-    const deletedItem = items.filter((item) => item.id !== id);
-    setItems(deletedItem);
+    if (window.confirm("Та устгахдаа илгэлтэй байна уу?")) {
+      const deletedItem = items.filter((item) => item.id !== id);
+      setItems(deletedItem);
+    }
   }
   function handleUpdateQuantity(id, selectedQuantity) {
     const matchedItem = items.find((item) => item.id === id);
@@ -78,7 +80,7 @@ const NewState = ({ children }) => {
       }}
     >
       {children}
-      <ShoppingCard showModal={showModal} handleClose={handleClose} />
+      {/* <ShoppingCard showModal={showModal} handleClose={handleClose} /> */}
     </CartContext.Provider>
   );
 };

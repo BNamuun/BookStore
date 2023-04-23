@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 import CartContext from "../context/cart/CartContext";
 import { useContext } from "react";
+import { ShoppingCard } from "./ShoppingCart";
 export function HeaderNew() {
-  const { items, handleOpen } = useContext(CartContext);
+  const { items, handleOpen, showModal, handleClose } = useContext(CartContext);
   // console.log(showModal);
   const linkStyle = {
     textDecoration: "none",
@@ -15,8 +16,8 @@ export function HeaderNew() {
 
   return (
     <>
-      <div className="containerNav">
-        <div className="headingS rowS">
+      <div className="containerNav relative">
+        <div className="headingS rowS ">
           <div className="logo">
             Erdem store <FontAwesomeIcon icon={faBookAtlas} size="xl" />
           </div>
@@ -47,6 +48,11 @@ export function HeaderNew() {
             {/* </div> */}
           </ul>
         </div>
+        <ShoppingCard
+          showModal={showModal}
+          handleClose={handleClose}
+          className="absolute top-6"
+        />
       </div>
     </>
   );
