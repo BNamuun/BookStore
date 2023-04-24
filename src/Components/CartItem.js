@@ -3,6 +3,7 @@ import CartContext from "../context/cart/CartContext";
 import Stack from "react-bootstrap/Stack";
 import { formatCurrency } from "./formatCurrency";
 import { RiDeleteBin6Line } from "react-icons/ri";
+const numeral = require("numeral");
 export function CartItem({ data }) {
   console.log("dta", data);
   // const [increaseAmount, setIncreaseAmount] = useState(Number(data.quantity));
@@ -41,7 +42,7 @@ export function CartItem({ data }) {
         <div className="text-muted text-base">₮ {data.price}</div>
       </div>
       <div className="ms-auto font-semibold">
-        {formatCurrency(data.price * data.quantity)}
+        {numeral(data.price * data.quantity).format("0,0 ")}₮
       </div>
 
       <div className="border divide-x-4 divide-slate-400/25 text-lg flex justify-content-center items-center">

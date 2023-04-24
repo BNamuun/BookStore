@@ -98,11 +98,11 @@ export function Order() {
               <h1 className="text-3xl mb-0">{productInfo.title}</h1>
               <div className="text-xl pt-1 d-flex">
                 <span className="">
-                  ₮{" "}
                   {productInfo.price &&
                     productInfo.price.toLocaleString(navigator.language, {
                       minimumFractionDigits: 0,
-                    })}
+                    })}{" "}
+                  ₮
                 </span>
               </div>
               <div className="contentR">{parse(`${productInfo.content}`)}</div>

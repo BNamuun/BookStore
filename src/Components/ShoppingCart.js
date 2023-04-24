@@ -4,8 +4,8 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import CartContext from "../context/cart/CartContext";
 import { CartItem } from "./CartItem";
 import Stack from "react-bootstrap/Stack";
-import { formatCurrency } from "./formatCurrency";
 import { useNavigate } from "react-router-dom";
+const numeral = require("numeral");
 export function ShoppingCard({ showModal, handleClose }) {
   const { items, handleEmptyCart } = useContext(CartContext);
   const navigate = useNavigate();
@@ -49,12 +49,13 @@ export function ShoppingCard({ showModal, handleClose }) {
               <div className="ms-auto fw-bold fs-5">
                 {" "}
                 Нийт:{" "}
-                {formatCurrency(
+                {numeral(
                   items.reduce((total, cartItem) => {
                     const item = items.find((i) => i.id === cartItem.id);
                     return total + (item?.price || 0) * cartItem.quantity;
                   }, 0)
-                )}
+                ).format("0,0 ")}{" "}
+                ₮
               </div>
             </Stack>
           ) : (

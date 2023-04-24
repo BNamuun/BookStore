@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BiArrowToRight, BiArrowToLeft } from "react-icons/bi";
 import { BsFillPlayCircleFill, BsPauseCircle } from "react-icons/bs";
+
 export function AudioBook({ img, audioSongImg, id }) {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
