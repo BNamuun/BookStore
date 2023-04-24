@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import CartContext from "../context/cart/CartContext";
 import { CartItem } from "./CartItem";
 import Stack from "react-bootstrap/Stack";
 import { formatCurrency } from "./formatCurrency";
+import { useNavigate } from "react-router-dom";
 export function ShoppingCard({ showModal, handleClose }) {
   const { items, handleEmptyCart } = useContext(CartContext);
+  const navigate = useNavigate();
+  const navigateToOrder = () => {
+    navigate("/makeOrder");
+    handleClose();
+  };
   console.log("showCanvas", showModal);
   return (
     <>
@@ -21,7 +27,9 @@ export function ShoppingCard({ showModal, handleClose }) {
           className="max-w-screen-xl border-b-2 border-gray-30 flex justify-between items-center"
         >
           <Offcanvas.Title>Таны сагс </Offcanvas.Title>
-          <Button variant="primary">Захиалга хийх</Button>
+          <Button variant="primary" onClick={navigateToOrder}>
+            Захиалга хийх
+          </Button>
           <div className="vr" />
           <button
             className=" border-2 border-grey-600 text-rose-400 p-1"
