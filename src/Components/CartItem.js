@@ -5,22 +5,22 @@ import { formatCurrency } from "./formatCurrency";
 import { RiDeleteBin6Line } from "react-icons/ri";
 export function CartItem({ data }) {
   console.log("dta", data);
-  const [increaseAmount, setIncreaseAmount] = useState(Number(data.quantity));
-  const [decreaseAmount, setDecreaseAmount] = useState(Number(data.quantity));
+  // const [increaseAmount, setIncreaseAmount] = useState(Number(data.quantity));
+  // const [decreaseAmount, setDecreaseAmount] = useState(Number(data.quantity));
   const { handleUpdateQuantity, handledeleteItem } = useContext(CartContext);
 
   if (!data) return null;
   function increasetQtity() {
-    if (increaseAmount >= 1) {
-      const newQuantity = increaseAmount + 1;
-      setIncreaseAmount(newQuantity);
+    if (data.quantity >= 1) {
+      const newQuantity = data.quantity + 1;
+      // setIncreaseAmount(newQuantity);
       handleUpdateQuantity(data.id, newQuantity);
     }
   }
   function decreasetQtity() {
-    if (decreaseAmount > 1) {
-      const newQuantity = decreaseAmount - 1;
-      setDecreaseAmount(newQuantity);
+    if (data.quantity > 1) {
+      const newQuantity = data.quantity - 1;
+      // setDecreaseAmount(newQuantity);
       handleUpdateQuantity(data.id, newQuantity);
     }
   }

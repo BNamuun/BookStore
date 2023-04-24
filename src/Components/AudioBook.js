@@ -15,6 +15,13 @@ export function AudioBook({ img, audioSongImg, id }) {
     progressBar.current.max = seconds;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
+  // useEffect(() => {
+  //   return () => {
+  //     if (isPlaying) {
+  //       togglePlayPause();
+  //     }
+  //   };
+  // }, []);
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
     const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;

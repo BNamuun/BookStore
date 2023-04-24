@@ -4,22 +4,23 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { formatCurrency } from "./formatCurrency";
 export function MakeOrder() {
   const { items } = useContext(CartContext);
-  const [increaseAmount, setIncreaseAmount] = useState(Number(items.quantity));
-  const [decreaseAmount, setDecreaseAmount] = useState(Number(items.quantity));
+  // const [increaseAmount, setIncreaseAmount] = useState(Number(items.quantity));
+  // const [decreaseAmount, setDecreaseAmount] = useState(Number(items.quantity));
   const { handleUpdateQuantity, handledeleteItem } = useContext(CartContext);
   if (!items) return null;
-  function increasetQtity() {
-    if (increaseAmount >= 1) {
-      const newQuantity = increaseAmount + 1;
-      setIncreaseAmount(newQuantity);
-      handleUpdateQuantity(items.id, newQuantity);
+  console.log(items);
+  function increasetQtity(item) {
+    if (item.quantity >= 1) {
+      const newQuantity = item.quantity + 1;
+      // setIncreaseAmount(newQuantity);
+      handleUpdateQuantity(item.id, newQuantity);
     }
   }
-  function decreasetQtity() {
-    if (decreaseAmount > 1) {
-      const newQuantity = decreaseAmount - 1;
-      setDecreaseAmount(newQuantity);
-      handleUpdateQuantity(items.id, newQuantity);
+  function decreasetQtity(item) {
+    if (item.quantity > 1) {
+      const newQuantity = item.quantity - 1;
+      // setDecreaseAmount(newQuantity);
+      handleUpdateQuantity(item.id, newQuantity);
     }
   }
   return (
@@ -44,17 +45,23 @@ export function MakeOrder() {
                   <p className="text-muted text-base">{item.price} ₮</p>
                 </div>
                 <div className="ms-auto font-semibold">
-                  {formatCurrency(item.price * item.quantity)}
+                  {formatCurrency(item.price * item.quantity)} ₮
                 </div>
 
                 <div className="border divide-x-4 divide-slate-400/25 text-lg flex justify-content-center items-center">
-                  <button onClick={decreasetQtity} className="px-2 font-bold">
+                  <button
+                    onClick={() => decreasetQtity(item)}
+                    className="px-2 font-bold"
+                  >
                     -
                   </button>
                   {/* <div className="vr"></div> */}
                   <span className="px-2">{item.quantity}</span>
                   {/* <div className="vr"></div> */}
-                  <button onClick={increasetQtity} className="px-2 font-bold">
+                  <button
+                    onClick={() => increasetQtity(item)}
+                    className="px-2 font-bold"
+                  >
                     +
                   </button>
                 </div>
