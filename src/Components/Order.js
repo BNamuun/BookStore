@@ -13,6 +13,10 @@ import "react-toastify/dist/ReactToastify.css";
 export function Order() {
   // const [searchParams, setSearchParams] = useSearchParams({});
   const { id } = useParams();
+  const navigate = useNavigate();
+  const navigateToOrder = () => {
+    navigate("/makeOrder");
+  };
   // const productOrder = searchParams.get("order");
   const [productInfo, setProductInfo] = useState({});
   const [adding, setAdding] = useState(false);
@@ -60,7 +64,10 @@ export function Order() {
     // handleOpen();
     notify();
   };
-
+  const handleOrder = () => {
+    addToCart(productDetail);
+    navigateToOrder();
+  };
   const notify = () =>
     toast.success(
       `🦄 Таны сагсанд ${selectedQuantity} ш ${productInfo.title} нэмэгдлээ!`,
@@ -144,7 +151,10 @@ export function Order() {
                   <FontAwesomeIcon icon={faCartShopping} className="px-2" />
                   Сагслах
                 </button>
-                <button className="border-2 col-md-6 col-12 border-indigo-900 py-2">
+                <button
+                  className="border-2 col-md-6 col-12 border-indigo-900 py-2 active:bg-teal-500"
+                  onClick={handleOrder}
+                >
                   Захиалах
                 </button>
               </div>

@@ -1,18 +1,52 @@
+import React from "react";
 import { useContext, useState } from "react";
 import CartContext from "../context/cart/CartContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { formatCurrency } from "./formatCurrency";
+import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
+import { Account } from "./account";
+import axios from "axios";
 const numeral = require("numeral");
 export function MakeOrder() {
   const { items } = useContext(CartContext);
-  const [showForm, setShowForm] = useState(false);
-  // const [increaseAmount, setIncreaseAmount] = useState(Number(items.quantity));
-  // const [decreaseAmount, setDecreaseAmount] = useState(Number(items.quantity));
+  const [totalPrice, setTotalPrice] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [isRequiredFilled, setIsRequiredFilled] = useState(false);
+
   const { handleUpdateQuantity, handledeleteItem } = useContext(CartContext);
+  const initialValues = {
+    phoneNumber: "",
+    district: "",
+    name: "",
+    address: "",
+    date: "",
+    order: items.map((item) => ({
+      bookName: item.title,
+      quantity: item.quantity,
+    })),
+    fee: numeral(
+      items.reduce((total, cartItem) => {
+        const item = items.find((i) => i.id === cartItem.id);
+        return total + (item?.price || 0) * cartItem.quantity;
+      }, 0)
+    ).format("0,0 "),
+  };
+
+  const [orderDetail, setOrderDetail] = useState(initialValues);
+  function handleOrderDetails(e) {
+    const value = e.target.value;
+    setOrderDetail({
+      ...orderDetail,
+      [e.target.name]: value,
+    });
+  }
   if (!items) return null;
-  console.log(items);
   function increasetQtity(item) {
     if (item.quantity >= 1) {
       const newQuantity = item.quantity + 1;
@@ -27,10 +61,24 @@ export function MakeOrder() {
       handleUpdateQuantity(item.id, newQuantity);
     }
   }
-  return (
+  const handleSubmitOrder = async () => {
+    handleShow();
+    // orderDetail.date = new Date().toLocaleString();
+    // axios
+    //   .post(`http://localhost:8000/orderDetails`, orderDetail)
+    //   .then((res) => {
+    //     const { status } = res;
+    //     if (status === 201) {
+    //       alert("Захиалга амжилттай хийгдлээ");
+    //     }
+    //   });
+    // console.log(orderDetail);
+    // Handle form submission logic here
+  };
+  return items.length > 0 ? (
     <div className="max-w-screen-xl px-5 m-auto py-8">
       {/* <h2> Таны сагс</h2> */}
-      <div className="grid lg:grid-cols-2 gap-x-10 min-h-screen">
+      <div className="grid lg:grid-cols-2 md:grid-col-2 grid-cols-1 gap-x-10 min-h-screen">
         <div className="">
           {items.map((item) => (
             <>
@@ -97,93 +145,90 @@ export function MakeOrder() {
           </h4>
           <Form>
             <label
-              for="countries"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              htmlFor="countries"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Дүүрэг
             </label>
             <select
+              name="district"
               id="countries"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mb-3  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg mb-3  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              onChange={handleOrderDetails}
+              value={orderDetail.district}
             >
               <option selected>Дүүрэг сонгох</option>
-              <option value="US">УБ-Баянгол</option>
-              <option value="CA">УБ-Баянзүрх</option>
-              <option value="CA">УБ-Сонгинохайрхан</option>
-              <option value="CA">УБ-Сүхбаатар</option>
-              <option value="CA">УБ-Хан-Уул</option>
-              <option value="CA">УБ-Чингэлтэй</option>
-              <option value="FR">Налайх</option>
+              <option value="Баянгол">Баянгол</option>
+              <option value="Баянзүрх">Баянзүрх</option>
+              <option value="Сонгинохайрхан">Сонгинохайрхан</option>
+              <option value="Cүхбаатар">Сүхбаатар</option>
+              <option value="Хан-уул">Хан-Уул</option>
+              <option value="Чингэлтэй">Чингэлтэй</option>
+              <option value="Налайх">Налайх</option>
             </select>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Гэрийн хаяг </Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Хүргэлтийн хаяг </Form.Label>
               <Form.Control
+                name="address"
+                value={orderDetail.address}
+                onChange={handleOrderDetails}
                 type="text"
                 placeholder="Жич: Их монгол хороолол, 5-р байр, 2-р орц"
               />
-              <Form.Text className="text-muted">
-                Таны хаяг нууцлагдах болно.
-              </Form.Text>
             </Form.Group>
-            <div className="grid gap-x-2 mb-3 grid-cols-2">
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+            <div className="grid gap-x-2 mb-3 md:grid-cols-2 grid-col-1">
+              <Form.Group className="mb-3">
                 <Form.Label>Хүлээн авагчийн нэр: </Form.Label>
                 <Form.Control
+                  name="name"
+                  value={orderDetail.name}
+                  onChange={handleOrderDetails}
                   type="text"
                   placeholder="Хүлээн авагчийн нэр"
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3">
                 <Form.Label>Утасны дугаар: </Form.Label>
-                <Form.Control type="tel" placeholder="Утасны дугаар" required />
+                <Form.Control
+                  name="phoneNumber"
+                  value={orderDetail.phoneNumber}
+                  onChange={handleOrderDetails}
+                  type="tel"
+                  placeholder="Утасны дугаар"
+                  required
+                />
               </Form.Group>
             </div>
 
-            <Button variant="primary" type="submit" className="w-60">
-              Захиалга хийх
+            <Button
+              variant="primary"
+              className="w-60"
+              onClick={handleSubmitOrder}
+            >
+              Continue
             </Button>
+            <Modal show={show} onHide={handleClose} animation={false}>
+              <Modal.Header closeButton>
+                <Modal.Title> Захиалга </Modal.Title>
+              </Modal.Header>
+              <Modal.Body className="w-full">
+                <Account />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </Form>
-        </div>
-        <table class="border-double border-4 border-sky-800">
-          <tbody>
-            <tr className="border border-b-3">
-              <td className=" pl-3">Банк:</td>
-              <td className=" pl-3 font-bold">Хаан</td>
-            </tr>
-            <tr className="border border-b-3">
-              <td className=" pl-3">Хүлээн авагчийн нэр:</td>
-              <td className=" pl-3 font-bold">БатЭрдэнэ</td>
-            </tr>
-            <tr className="border border-b-3">
-              <td className=" pl-3">Данс:</td>
-              <td className=" pl-3 font-bold">5019716477</td>
-            </tr>
-            <tr className="border border-b-3">
-              <td className=" pl-3"> Дүн</td>
-              <td className=" pl-3 font-bold">
-                {" "}
-                {numeral(
-                  items.reduce((total, cartItem) => {
-                    const item = items.find((i) => i.id === cartItem.id);
-                    return total + (item?.price || 0) * cartItem.quantity;
-                  }, 0)
-                ).format("0,0 ")}{" "}
-                ₮
-              </td>
-            </tr>
-            <tr>
-              <td className=" pl-3"> Гүйлгээний утга:</td>
-              <td className=" pl-3 font-bold">Утасны дугаар</td>
-            </tr>
-          </tbody>
-        </table>
-        <div>
-          <span>
-            Та 24 цагийн дотор шилжүүлснээр таны захиалга амжилттай хийгдэнэ
-          </span>
         </div>
       </div>
     </div>
+  ) : (
+    <h5> Таны сагс хоосон байна</h5>
   );
 }
