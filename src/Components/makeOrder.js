@@ -63,16 +63,16 @@ export function MakeOrder() {
   }
   const handleSubmitOrder = async () => {
     handleShow();
-    // orderDetail.date = new Date().toLocaleString();
-    // axios
-    //   .post(`http://localhost:8000/orderDetails`, orderDetail)
-    //   .then((res) => {
-    //     const { status } = res;
-    //     if (status === 201) {
-    //       alert("Захиалга амжилттай хийгдлээ");
-    //     }
-    //   });
-    // console.log(orderDetail);
+    orderDetail.date = new Date().toLocaleString();
+    axios
+      .post(`http://localhost:8000/orderDetails`, orderDetail)
+      .then((res) => {
+        const { status } = res;
+        if (status === 201) {
+          alert("Захиалга амжилттай хийгдлээ");
+        }
+      });
+    console.log(orderDetail);
     // Handle form submission logic here
   };
   return items.length > 0 ? (

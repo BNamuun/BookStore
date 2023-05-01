@@ -2,14 +2,27 @@ import { useEffect, useRef, useState } from "react";
 import { BiArrowToRight, BiArrowToLeft } from "react-icons/bi";
 import { BsFillPlayCircleFill, BsPauseCircle } from "react-icons/bs";
 
-export function AudioBook({ img, audioSongImg, id }) {
+export function AudioBook({
+  img,
+  audioSongImg,
+  id,
+  isPlaying,
+  setIsPlaying,
+  activeId,
+  getActiveId,
+}) {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  // const [activeIDaudio, getActiveId] = useState("");
+  // console.log("active", activeIDaudio);
+  // const [isPlaying, setIsPlaying] = useState(false);
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
-  console.log(isPlaying);
+  if (activeId === id) {
+    setIsPlaying(true);
+  }
+  console.log("ene", isPlaying);
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
@@ -40,6 +53,7 @@ export function AudioBook({ img, audioSongImg, id }) {
       audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
+    getActiveId(id);
   }
   const whilePlaying = () => {
     progressBar.current.value = audioPlayer.current.currentTime;

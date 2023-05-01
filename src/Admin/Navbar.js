@@ -20,7 +20,9 @@ export function NavBar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link>Ангилал</Nav.Link>
+            <Nav.Link to="/admin/orders" as={Link}>
+              Захиалга
+            </Nav.Link>
             <Nav.Link to="/admin/addProducts" as={Link}>
               products
             </Nav.Link>

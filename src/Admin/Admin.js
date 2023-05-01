@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { AddProducts } from "./AddProducts";
 import { NavBar } from "./Navbar";
+import { OrderList } from "./OrderList";
 
 export function Admin() {
   return (
@@ -9,6 +10,7 @@ export function Admin() {
       <Routes>
         <Route path="/" element={<h1>Welcome</h1>} />
         <Route path="/addProducts" element={<AddProducts />} />
+        <Route path="/orders" element={<OrderList />} />
       </Routes>
     </>
   );
