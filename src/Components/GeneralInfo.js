@@ -6,7 +6,9 @@ import Nancy from "../images/Nancy.jpg";
 import "../css/general.css";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import { useNavigate } from "react-router-dom";
 export function GeneralInfo() {
+  const navigate = useNavigate();
   return (
     <>
       <section>
@@ -30,6 +32,9 @@ export function GeneralInfo() {
               <AwesomeButton
                 style={{ width: "200px", fontSize: "1.1rem" }}
                 type="primary"
+                onPress={() => {
+                  navigate("/products/0fb7da45-4222-4665-bbcf-9849757627be");
+                }}
               >
                 {" "}
                 Дэлгэрэнгүй

@@ -33,15 +33,15 @@ export function AudioBookPlayer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-5 ">
           {audioArr.map((e) => {
             return (
-              // <AudioBook
-              //   img={e.img}
-              //   id={e.id}
-              //   audioSongImg={e.audioSongImg}
-              //   isPlaying={isPlaying}
-              //   setIsPlaying={setIsPlaying}
-              //   activeId={activeId}
-              // />
-              <MusicPlayer img={e.img} audio={e.audioSongImg} />
+              <AudioBook
+                img={e.img}
+                id={e.id}
+                audioSongImg={e.audioSongImg}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+                activeId={activeId}
+              />
+              // <MusicPlayer img={e.img} audio={e.audioSongImg} />
               // <div className="relative">
               //   <img src={e.img} alt="test" className="hover:opacity-70" />
               //   <div className="absolute bottom-0 bg-zinc-700 bg-opacity-75 text-white w-full pt-2">

@@ -61,19 +61,25 @@ export function MakeOrder() {
       handleUpdateQuantity(item.id, newQuantity);
     }
   }
-  const handleSubmitOrder = async () => {
-    handleShow();
-    orderDetail.date = new Date().toLocaleString();
-    axios
-      .post(`http://localhost:8000/orderDetails`, orderDetail)
-      .then((res) => {
-        const { status } = res;
-        if (status === 201) {
-          alert("Захиалга амжилттай хийгдлээ");
-        }
-      });
-    console.log(orderDetail);
-    // Handle form submission logic here
+  const handleSubmitOrder = async (e) => {
+    e.preventDefault();
+
+    if (e.target.checkValidity()) {
+      setIsRequiredFilled(false);
+
+      orderDetail.date = new Date().toLocaleString();
+      axios
+        .post(`http://localhost:8000/orderDetails`, orderDetail)
+        .then((res) => {
+          const { status } = res;
+          if (status === 201) {
+            alert("Захиалга амжилттай хийгдлээ");
+          }
+        });
+      handleShow();
+    } else {
+      setIsRequiredFilled(true);
+    }
   };
   return items.length > 0 ? (
     <div className="max-w-screen-xl px-5 m-auto py-8">
@@ -188,17 +194,19 @@ export function MakeOrder() {
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Утасны дугаар: </Form.Label>
-                <Form.Control
-                  name="phoneNumber"
-                  value={orderDetail.phoneNumber}
-                  onChange={handleOrderDetails}
-                  type="tel"
-                  placeholder="Утасны дугаар"
-                  required
-                />
-              </Form.Group>
+              {isRequiredFilled && (
+                <Form.Group className="mb-3">
+                  <Form.Label>Утасны дугаар: </Form.Label>
+                  <Form.Control
+                    name="phoneNumber"
+                    value={orderDetail.phoneNumber}
+                    onChange={handleOrderDetails}
+                    type="tel"
+                    placeholder="Утасны дугаар"
+                    required
+                  />
+                </Form.Group>
+              )}
             </div>
 
             <Button

@@ -34,6 +34,9 @@ export function HeaderNew() {
             <Link className="cta" to="/" as={Link} style={linkStyle}>
               Захиалах
             </Link>
+            <Link to="/login" as={Link} style={linkStyle}>
+              Нэвтрэх
+            </Link>
             {/* <div className="relative" style={linkStyle}> */}
             <div className="relative">
               <TiShoppingCart onClick={handleOpen} className="text-2xl" />
@@ -48,6 +51,7 @@ export function HeaderNew() {
             {/* </div> */}
           </ul>
         </div>
+
         <ShoppingCard
           showModal={showModal}
           handleClose={handleClose}
