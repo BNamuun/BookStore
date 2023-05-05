@@ -31,9 +31,9 @@ export function HeaderNew() {
             <Link to="/audio" as={Link} style={linkStyle}>
               AudioBook
             </Link>
-            <Link className="cta" to="/" as={Link} style={linkStyle}>
+            {/* <Link className="cta" to="/" as={Link} style={linkStyle}>
               Захиалах
-            </Link>
+            </Link> */}
             <Link to="/login" as={Link} style={linkStyle}>
               Нэвтрэх
             </Link>

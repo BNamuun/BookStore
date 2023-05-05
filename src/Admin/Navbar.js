@@ -26,6 +26,9 @@ export function NavBar() {
             <Nav.Link to="/admin/addProducts" as={Link}>
               products
             </Nav.Link>
+            <Nav.Link to="/admin/SignUp" as={Link}>
+              Бүртгүүлэх
+            </Nav.Link>
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">

@@ -1,10 +1,39 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export function UserLogin() {
+  const [userNumber, setUserNumber] = useState();
+  const [password, setPassword] = useState();
+  console.log({ userNumber, password });
+  const navigate = useNavigate();
+  function handleLogin() {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/user/login`, {
+        userNumber,
+        password,
+      })
+      .then((res) => {
+        const { data, status } = res;
+        if (status === 201) {
+          alert("Амжилттай нэвтэрлээ");
+          const { token } = data;
+          console.log(token);
+          localStorage.setItem("ErdemToken", token);
+          navigate("/");
+        } else {
+          alert("Нэвтрэхэд алдаа гарлаа");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err.response?.data.message);
+      });
+  }
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-5 mx-auto md:h-screen lg:py-0">
         <a
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
@@ -33,9 +62,12 @@ export function UserLogin() {
                   type="phoneNumber"
                   name="phoneNumber"
                   id="phoneNumber"
+                  maxLength="8"
+                  value={userNumber}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Утасны дугаар"
                   required=""
+                  onChange={(e) => setUserNumber(e.target.value)}
                 />
               </div>
               <div>
@@ -49,9 +81,11 @@ export function UserLogin() {
                   type="password"
                   name="password"
                   id="password"
+                  value={password}
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               {/* <div className="flex items-center justify-between">
@@ -82,9 +116,10 @@ export function UserLogin() {
                 </a>
               </div> */}
               <Button
-                type="submit"
+                // type="submit"
                 variant="primary"
                 className="w-full bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                onClick={handleLogin}
               >
                 Нэвтрэх
               </Button>
