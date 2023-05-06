@@ -6,14 +6,20 @@ import { TiShoppingCart } from "react-icons/ti";
 import CartContext from "../context/cart/CartContext";
 import { useContext } from "react";
 import { ShoppingCard } from "./ShoppingCart";
-export function HeaderNew() {
+import { Button } from "bootstrap";
+import { BsWindowSidebar } from "react-icons/bs";
+export function HeaderNewAudio() {
   const { items, handleOpen, showModal, handleClose } = useContext(CartContext);
   // console.log(showModal);
   const linkStyle = {
     textDecoration: "none",
     color: "#063255",
   };
-
+  function handleOut() {
+    window.confirm("Та гарахдаа итгэлтэй байна уу?");
+    localStorage.removeItem("ErdemToken");
+    window.location.reload();
+  }
   return (
     <>
       <div className="containerNav relative sticky top-0 z-50">
@@ -28,13 +34,18 @@ export function HeaderNew() {
             <Link to="/products" as={Link} style={linkStyle}>
               Бүгд
             </Link>
-
+            <Link to="/audio" as={Link} style={linkStyle}>
+              AudioBook
+            </Link>
             {/* <Link className="cta" to="/" as={Link} style={linkStyle}>
               Захиалах
             </Link> */}
             <Link to="/login" as={Link} style={linkStyle}>
               Нэвтрэх
             </Link>
+            <button className="text-orange-600" onClick={handleOut}>
+              Гарах
+            </button>
             {/* <div className="relative" style={linkStyle}> */}
             <div className="relative">
               <TiShoppingCart onClick={handleOpen} className="text-2xl" />

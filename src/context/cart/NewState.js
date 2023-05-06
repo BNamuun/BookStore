@@ -11,6 +11,7 @@ const NewState = ({ children }) => {
   const [showModal, setshowModal] = useState(false);
   const handleClose = () => setshowModal(false);
   const handleOpen = () => setshowModal(true);
+  const [audioNavbar, setAudioNavbar] = useState(false);
 
   function addToCart(productDetail) {
     const existingItem = items.find((item) => item.id === productDetail.id);
@@ -77,6 +78,8 @@ const NewState = ({ children }) => {
         handleUpdateQuantity,
         handledeleteItem,
         handleEmptyCart,
+        audioNavbar,
+        setAudioNavbar,
       }}
     >
       {children}

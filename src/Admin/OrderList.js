@@ -73,6 +73,18 @@ export function OrderList() {
         }
       });
   }
+  function handleDelete(id) {
+    if (window.confirm("Устгах уу?")) {
+      axios
+        .delete(`${process.env.REACT_APP_API_URL}/orderDetails/${id}`)
+        .then((res) => {
+          const { data, status } = res;
+          if (status === 200) {
+            loadOrderData();
+          }
+        });
+    }
+  }
   if (!data) return null;
   return (
     <>
@@ -133,11 +145,22 @@ export function OrderList() {
                       )}
                     />
                   </td>
+                  <td className="flex gap-2">
+                    <Button
+                      onClick={(e) => handleSaveSelect(one._id, selected)}
+                    >
+                      {" "}
+                      save
+                    </Button>
 
-                  <Button onClick={(e) => handleSaveSelect(one._id, selected)}>
-                    {" "}
-                    save
-                  </Button>
+                    <Button
+                      variant="warning"
+                      onClick={(e) => handleDelete(one._id)}
+                    >
+                      {" "}
+                      delete
+                    </Button>
+                  </td>
                 </tr>
               );
             })}

@@ -194,19 +194,18 @@ export function MakeOrder() {
                   required
                 />
               </Form.Group>
-              {isRequiredFilled && (
-                <Form.Group className="mb-3">
-                  <Form.Label>Утасны дугаар: </Form.Label>
-                  <Form.Control
-                    name="phoneNumber"
-                    value={orderDetail.phoneNumber}
-                    onChange={handleOrderDetails}
-                    type="tel"
-                    placeholder="Утасны дугаар"
-                    required
-                  />
-                </Form.Group>
-              )}
+
+              <Form.Group className="mb-3">
+                <Form.Label>Утасны дугаар: </Form.Label>
+                <Form.Control
+                  name="phoneNumber"
+                  value={orderDetail.phoneNumber}
+                  onChange={handleOrderDetails}
+                  type="tel"
+                  placeholder="Утасны дугаар"
+                  required
+                />
+              </Form.Group>
             </div>
 
             <Button

@@ -26,6 +26,9 @@ export function NavBar() {
             <Nav.Link to="/admin/addProducts" as={Link}>
               products
             </Nav.Link>
+            <Nav.Link to="/admin/uploadAudio" as={Link}>
+              UploadAudio
+            </Nav.Link>
             <Nav.Link to="/admin/SignUp" as={Link}>
               Бүртгүүлэх
             </Nav.Link>

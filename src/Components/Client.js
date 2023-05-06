@@ -11,11 +11,40 @@ import { Order } from "./Order";
 import { AudioBookPlayer } from "./AudioExample";
 import { MakeOrder } from "./makeOrder";
 import { UserLogin } from "./UserLogin";
+import { useContext, useEffect } from "react";
+import CartContext from "../context/cart/CartContext";
+import { HeaderNewAudio } from "./HeaderNewAudio";
 
 export function Client() {
+  // const { audioNavbar, setAudioNavbar } = useContext(CartContext);
+
+  // const token = localStorage.getItem("ErdemToken");
+  // console.log("enesdh", token);
+
+  // if (token) {
+  //   setAudioNavbar(true);
+  //   window.location.reload();
+  // } else {
+  //   setAudioNavbar(false);
+  // }
+
+  const { audioNavbar, setAudioNavbar } = useContext(CartContext);
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("ErdemToken");
+  //   if (token) {
+  //     setAudioNavbar(true);
+  //     // window.location.reload();
+  //   } else {
+  //     setAudioNavbar(false);
+  //   }
+  // }, []);
+
+  console.log("xoxo", audioNavbar);
   return (
     <>
-      <HeaderNew />
+      {audioNavbar ? <HeaderNewAudio /> : <HeaderNew />}
+
       <Routes>
         <Route path="/" element={<Header />} />
         <Route path="/products" element={<Info />} />
