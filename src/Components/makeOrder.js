@@ -69,7 +69,7 @@ export function MakeOrder() {
 
       orderDetail.date = new Date().toLocaleString();
       axios
-        .post(`http://localhost:8000/orderDetails`, orderDetail)
+        .post(`${process.env.REACT_APP_API_URL}/orderDetails`, orderDetail)
         .then((res) => {
           const { status } = res;
           if (status === 201) {
