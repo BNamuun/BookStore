@@ -57,7 +57,6 @@ export function AudioBookPlayer() {
               />
               <div className="absolute bottom-0 bg-zinc-700 bg-opacity-75 text-white w-full pt-2">
                 <AudioPlayer
-                  autoPlay
                   src={e.audio}
                   onPlay={() => handlePlay(e._id)}
                   onPause={handlePause}
