@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />;
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />;
-  <meta property="og:title" content="Namuun" />
+  <meta property="og:title" content="wolf" />
   <meta property="og:url" content="https://book-store-flame.vercel.app/" />
   <meta property="og:type" content="article" />
   <meta property="og:description" content="iim yum ban" />
