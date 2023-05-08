@@ -209,6 +209,7 @@ export function MakeOrder() {
             </div>
 
             <Button
+              type="submit"
               variant="primary"
               className="w-60"
               onClick={handleSubmitOrder}

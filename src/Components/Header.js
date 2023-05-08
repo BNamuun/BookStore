@@ -23,7 +23,7 @@ export function Header() {
       <GeneralInfo />
       {/* <CarouselNav /> */}
       {/* <Info /> */}
-      <Helmet>
+      {/* <Helmet>
         <head>
           <meta property="og:title" content="Namuun" />
           <meta
@@ -37,7 +37,7 @@ export function Header() {
             content="https://res.cloudinary.com/dkmzrowed/image/upload/v1683468942/public/level1/p7vz2u1jtqgs2glupzud.jpg"
           />
         </head>
-      </Helmet>
+      </Helmet> */}
       ;
     </>
   );
