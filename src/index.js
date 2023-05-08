@@ -9,7 +9,10 @@ import Helmet from "react-helmet";
     <meta property="og:title" content="Namuun" />
     <meta property="og:url" content="https://book-store-flame.vercel.app/" />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="iim yum ban" />
+    <meta
+      property="og:description"
+      content="iim yum ban skdj flks jfkls jlkf"
+    />
     <meta
       property="og:image"
       content="https://res.cloudinary.com/dkmzrowed/image/upload/v1683468942/public/level1/p7vz2u1jtqgs2glupzud.jpg"
