@@ -14,6 +14,7 @@ import { UserLogin } from "./UserLogin";
 import { useContext, useEffect } from "react";
 import CartContext from "../context/cart/CartContext";
 import { HeaderNewAudio } from "./HeaderNewAudio";
+import { Audios } from "./Audios";
 
 export function Client() {
   // const { audioNavbar, setAudioNavbar } = useContext(CartContext);
@@ -40,16 +41,17 @@ export function Client() {
   //   }
   // }, []);
 
-  console.log("xoxo", audioNavbar);
+  // console.log("xoxo", audioNavbar);
   return (
     <>
-      {audioNavbar ? <HeaderNewAudio /> : <HeaderNew />}
-
+      {/* {audioNavbar ? <HeaderNewAudio /> : <HeaderNew />} */}
+      <HeaderNewAudio />
       <Routes>
         <Route path="/" element={<Header />} />
         <Route path="/products" element={<Info />} />
         <Route path="/products/:id" element={<Order />} />
-        <Route path="/audio" element={<AudioBookPlayer />} />
+        {/* <Route path="/audio" element={<AudioBookPlayer />} /> */}
+        <Route path="/audio" element={<Audios />} />
         <Route path="/makeOrder" element={<MakeOrder />} />
         <Route path="/login" element={<UserLogin />} />
       </Routes>

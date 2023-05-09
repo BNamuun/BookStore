@@ -73,7 +73,7 @@ export function MakeOrder() {
         .then((res) => {
           const { status } = res;
           if (status === 201) {
-            alert("Захиалга амжилттай хийгдлээ");
+            console.log("Захиалга амжилттай хийгдлээ");
           }
         });
       handleShow();
@@ -81,6 +81,12 @@ export function MakeOrder() {
       setIsRequiredFilled(true);
     }
   };
+  function handleClosewithAlert() {
+    handleClose();
+    alert(
+      "Захиалга амжилттай хийгдлээ, ErdemStore тантай удахгүй холбоо барих болно"
+    );
+  }
   return items.length > 0 ? (
     <div className="max-w-screen-xl px-5 m-auto py-8">
       {/* <h2> Таны сагс</h2> */}
@@ -149,7 +155,7 @@ export function MakeOrder() {
           <h4 className="text-lg font-semibold text-gray-900">
             Хүлээн авах хаяг
           </h4>
-          <Form>
+          <Form onSubmit={handleSubmitOrder}>
             <label
               htmlFor="countries"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -212,7 +218,7 @@ export function MakeOrder() {
               type="submit"
               variant="primary"
               className="w-60"
-              onClick={handleSubmitOrder}
+              value="Үргэлжлүүлэх"
             >
               Continue
             </Button>
@@ -224,11 +230,11 @@ export function MakeOrder() {
                 <Account />
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                {/* <Button variant="secondary" onClick={handleClose}>
                   Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Save Changes
+                </Button> */}
+                <Button variant="primary" onClick={handleClosewithAlert}>
+                  Төлбөр хийсэн
                 </Button>
               </Modal.Footer>
             </Modal>
