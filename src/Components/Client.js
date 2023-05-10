@@ -15,6 +15,7 @@ import { useContext, useEffect } from "react";
 import CartContext from "../context/cart/CartContext";
 import { HeaderNewAudio } from "./HeaderNewAudio";
 import { Audios } from "./Audios";
+import { UserProvider } from "./userProvider";
 
 export function Client() {
   // const { audioNavbar, setAudioNavbar } = useContext(CartContext);
@@ -51,7 +52,9 @@ export function Client() {
         <Route path="/products" element={<Info />} />
         <Route path="/products/:id" element={<Order />} />
         {/* <Route path="/audio" element={<AudioBookPlayer />} /> */}
+        {/* <UserProvider> */}
         <Route path="/audio" element={<Audios />} />
+        {/* </UserProvider> */}
         <Route path="/makeOrder" element={<MakeOrder />} />
         <Route path="/login" element={<UserLogin />} />
       </Routes>

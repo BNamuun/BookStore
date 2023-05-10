@@ -112,7 +112,9 @@ export function Order() {
                   ₮
                 </span>
               </div>
-              <div className="contentR">{parse(`${productInfo.content}`)}</div>
+              <div className="contentR">
+                {parse(`${productInfo.detailedContent}`)}
+              </div>
               <div className="border-dotted col-sm-6"></div>
               <div className="qnt">
                 <label htmlFor="qnty-select" style={{ paddingRight: "8px" }}>
@@ -201,6 +203,7 @@ export function Order() {
                 </td>
               </tr>
             </tbody>
+            {/* {productInfo.some} */}
             <div>{parse(`${productInfo.extraContent}`)}</div>
           </div>
         )}

@@ -18,7 +18,7 @@ export function OrderList() {
     { value: "Цуцлагдсан", label: "Цуцлагдсан" },
     { value: "Төлбөр-төлөөгүй", label: "Төлбөр төлөөгүй" },
   ];
-  console.log(selected);
+  console.log(data);
   function loadOrderData() {
     axios
       .get(`${process.env.REACT_APP_API_URL}/orderDetails/info`)
@@ -113,6 +113,7 @@ export function OrderList() {
               <th className="border border-slate-300 px-3">Дүүрэг</th>
               <th className="border border-slate-300 px-3">Хаяг</th>
               <th className="border border-slate-300 px-3">Огноо</th>
+              <th className="border border-slate-300 px-3">Захиалга</th>
               <th className="border border-slate-300 px-3">Төлбөр</th>
               <th className="border border-slate-300 px-3">Төлөв</th>
             </tr>
@@ -132,6 +133,11 @@ export function OrderList() {
                     {one.address}
                   </td>
                   <td className="border border-slate-300 px-3">{one.date}</td>
+                  <td className="border border-slate-300 px-3">
+                    {one.order.map((e) => {
+                      return `${e.bookName} -г ${e.orderedQuantity}ш `;
+                    })}
+                  </td>
                   <td className="border border-slate-300 px-3">{one.fee}</td>
                   <td className="border border-slate-300 px-3">{one.status}</td>
                   <td className="border border-slate-300 px-3">

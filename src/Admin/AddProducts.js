@@ -14,6 +14,7 @@ export function AddProducts() {
   const [uploading, setUploading] = useState(false);
   const [price, setPrice] = useState();
   const [modalVars, setModalVats] = useState();
+  const [some, setSome] = useState("");
   async function handleFileUpload(event) {
     setUploading(true);
     const imageFile = event.target.files[0];
@@ -43,6 +44,7 @@ export function AddProducts() {
         charcs: modalVars,
         images,
         price,
+        some,
       })
       .then((res) => {
         const { status } = res;
@@ -110,12 +112,12 @@ export function AddProducts() {
         </div>
       )}
 
-      {/* <input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+      <input
+        value={some}
+        onChange={(e) => setSome(e.target.value)}
         className="form-control"
-        placeholder="Мэдээ оруулах"
-      ></input> */}
+        placeholder="Нэмэлт url"
+      ></input>
       {/* <form
         action="http://localhost:8000/upload-image"
         method="post"
